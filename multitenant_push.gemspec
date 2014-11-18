@@ -7,7 +7,7 @@ require "multitenant_push/version"
 Gem::Specification.new do |s|
   s.name        = "multitenant_push"
   s.version     = MultitenantPush::VERSION
-  s.authors     = "2point0 Concepts", "Edgaras Poplavskis"]
+  s.authors     = ["2point0 Concepts", "Edgaras Poplavskis"]
   s.email       = ["epoplavskis@2point0concepts.com"]
   s.homepage    = "https://github.com/2point0concepts/multitenant_push"
   s.summary     = "Multitenant Push"
