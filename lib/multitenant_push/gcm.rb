@@ -3,6 +3,7 @@ GCM2 = GCM.clone
 
 module MultitenantPush
   module GCM
+    include GCM2
 
     def self.send_notification( device_tokens, data)
       self.load_credentials()
@@ -19,9 +20,9 @@ module MultitenantPush
 
 
     def self.load_credentials
-      raise NoTenantCredentials if Tenant.current_tenant.nil?
+      raise NoTenant if Tenant.current_tenant.nil?
       credentials = Credential.first
-      raise NoTenant if credentials.nil? || credentials.gcm_host.blank? || credentials.gcm_key.blank?
+      raise NoTenantCredentials if credentials.nil? || credentials.gcm_host.blank? || credentials.gcm_key.blank?
 
       GCM.host = credentials.gcm_host
       GCM.pass = credentials.gcm_key

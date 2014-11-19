@@ -3,6 +3,7 @@ APNS2 = APNS.clone
 
 module MultitenantPush
   module APNS
+    include APNS2
 
     def self.send_notification(device_token, message)
       self.load_credentials()
@@ -11,7 +12,7 @@ module MultitenantPush
 
     def self.send_notifications(notifications)
       self.load_credentials()
-      APNS2.send_notification(device_token, message)
+      APNS2.send_notifications(notifications)
     end
 
     def self.feedback
@@ -29,9 +30,9 @@ module MultitenantPush
 
 
     def self.load_credentials
-      raise NoTenantCredentials if Tenant.current_tenant.nil?
+      raise NoTenant if Tenant.current_tenant.nil?
       credentials = Credential.first
-      raise NoTenant if credentials.nil? || credentials.apns_host.blank? || credentials.apns_pass.blank?
+      raise NoTenantCredentials if credentials.nil? || credentials.apns_host.blank? || credentials.apns_pass.blank?
 
       APNS.host = credentials.apns_host
       APNS.pass = credentials.apns_pass
