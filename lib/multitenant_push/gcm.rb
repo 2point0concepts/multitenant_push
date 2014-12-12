@@ -25,7 +25,7 @@ module MultitenantPush
       raise NoTenantCredentials if credentials.nil? || credentials.gcm_host.blank? || credentials.gcm_key.blank?
 
       GCM.host = credentials.gcm_host
-      GCM.pass = credentials.gcm_key
+      GCM.key = credentials.gcm_key
       GCM.pem = "lib/#{Tenant.current_tenant.name}.pem"
 
     end
