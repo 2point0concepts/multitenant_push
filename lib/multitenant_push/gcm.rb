@@ -26,7 +26,6 @@ module MultitenantPush
 
       GCM.host = credentials.gcm_host
       GCM.key = credentials.gcm_key
-      GCM.pem = "lib/#{Tenant.current_tenant.name}.pem"
 
     end
 
