@@ -39,9 +39,6 @@ module MultitenantPush
       APNS.pem = "lib/#{Tenant.current_tenant.name}.pem"
 
     end
-
-    
-
   end
 
 end
